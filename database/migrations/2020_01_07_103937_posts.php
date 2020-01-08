@@ -16,7 +16,13 @@ class Posts extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('post_id');
             $table->unsignedBigInteger('cat_id');
+            $table->foreign('cat_id')
+                ->references('cat_id')->on('categories')
+                ->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
             $table->string('title');
             $table->string('pic_path');
             $table->longText('desc_text');
@@ -26,9 +32,6 @@ class Posts extends Migration
             $table->integer('comments');
             $table->string('lang');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('cat_id')->references('cat_id')->on('categories');
         });
     }
 
