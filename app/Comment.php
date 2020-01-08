@@ -16,11 +16,13 @@ class Comment extends Model
 
     public function post()
     {
-        return $this->belongsTo(Post::class);
+        // return $this->belongsTo(Post::class);
+        return $this->belongsTo('App\Post', 'post_id', 'post_id');
     }
     
     public function rate()
     {
-        return $this->belongsTo(Rate::class);
+        // return $this->belongsTo(Rate::class);
+        return $this->belongsTo('App\Rate', 'rate_id', 'rate_id');
     }
 }
