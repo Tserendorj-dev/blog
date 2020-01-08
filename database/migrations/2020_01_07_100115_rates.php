@@ -29,6 +29,6 @@ class Rates extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('rates');
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-//use App\User;
+use App\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -18,23 +18,25 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         
-        DB::table('users')->insert([
-            [
-                'name' => 'admin',//Str::random(10),
-                'email' => 'admin@blog.mn',//Str::random(10).'@gmail.com',
-                'level' => '1',
-                'password' => bcrypt('password123'),
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
-            ],
-            [
-                'name' => 'user',//Str::random(10),
-                'email' => 'user@blog.mn',//Str::random(10).'@gmail.com',
-                'level' => '2',
-                'password' => bcrypt('password123'),
-                'created_at' => new DateTime(),
-                'updated_at' => new DateTime(),
-            ],
-        ]);
+        factory(App\User::class, 2)->create();
+
+        // DB::table('users')->insert([
+        //     [
+        //         'name' => 'admin',//Str::random(10),
+        //         'email' => 'admin@blog.mn',//Str::random(10).'@gmail.com',
+        //         'level' => '1',
+        //         'password' => bcrypt('password123'),
+        //         'created_at' => new DateTime(),
+        //         'updated_at' => new DateTime(),
+        //     ],
+        //     [
+        //         'name' => 'user',//Str::random(10),
+        //         'email' => 'user@blog.mn',//Str::random(10).'@gmail.com',
+        //         'level' => '2',
+        //         'password' => bcrypt('password123'),
+        //         'created_at' => new DateTime(),
+        //         'updated_at' => new DateTime(),
+        //     ],
+        // ]);
     }
 }

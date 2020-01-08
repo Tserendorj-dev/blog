@@ -4,8 +4,9 @@
 
 use App\Model;
 use Faker\Generator as Faker;
+use App\Rate;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Rate::class, function (Faker $faker) {
     return [
         //
     ];
