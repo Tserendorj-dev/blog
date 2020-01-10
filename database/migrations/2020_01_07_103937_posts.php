@@ -27,9 +27,9 @@ class Posts extends Migration
             $table->string('pic_path');
             $table->longText('desc_text');
             $table->longText('full_text');
+            $table->boolean('is_active')->default(0);
             $table->boolean('is_visible')->default(0);
             $table->integer('views');
-            $table->integer('comments');
             $table->string('lang');
             $table->timestamps();
         });
