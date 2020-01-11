@@ -11,11 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WebController@index')->name('web');
 
 Auth::routes();
 
-Route::get('/dashboard', 'AdminController@index')->name('dashboard');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'AdminController@index')->name('dashboard')->middleware('admincheck');
+

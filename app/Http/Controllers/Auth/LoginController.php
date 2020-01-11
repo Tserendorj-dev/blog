@@ -32,11 +32,11 @@ class LoginController extends Controller
     public function redirectTo(){
         $role = Auth::user()->level; 
         switch ($role) {
-            case '1':
+            case 1:
                     return '/dashboard';
                 break;
-            case '2':
-                    return '/home';
+            case 2:
+                    return '/'; ///home
                 break; 
             default:
                     return '/login'; 
