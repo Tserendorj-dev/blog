@@ -20,6 +20,6 @@ class AdminCheck
             return $next($request);
         }
 
-        return redirect('/home');
+        return redirect('/homedadada');
     }
 }
