@@ -19,4 +19,5 @@ Route::get('/dashboard', 'AdminController@index')->name('dashboard')->middleware
 
 Route::resource('categories', 'admin\CategoryController');
 Route::resource('users', 'admin\UserController');
-
+Route::get('/catvisible/{id}', 'admin\CategoryController@Visible');
+Route::get('/catisvisible/{id}', 'admin\CategoryController@inVisible');

@@ -49620,3 +49620,11 @@ module.exports = __webpack_require__(/*! /home/vagrant/Projects_Laravel/blog/res
 /***/ })
 
 /******/ });
+
+function delete_alert(e){
+   if(!window.confirm('本当に削除しますか？')){
+      window.alert('キャンセルされました'); 
+      return false;
+   }
+   document.deleteform.submit();
+};

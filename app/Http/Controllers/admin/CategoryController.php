@@ -50,10 +50,22 @@ class CategoryController extends Controller
     {
         $validatedData = $request->validate([
             'cat_name' => 'required|max:255',
+            'is_visible' => 'max:1',
+            'lang' => 'max:2',
         ]);
+        
+        // $new = new Category();
+        // $new->parentmenu = $request->parentmenu;
+        // $new->menulbl = $request->menulbl;
+        // $new->hreflink = "www";
+        // $new->order = 1;
+        // $new->contentid = 1;
+        // $new->isactive = 1;
+        // $new->whois = Auth::user() -> id;
+        // $new->save();
 
         $category = Category::create($validatedData);
-        return redirect('/categories');
+        return redirect('/categories')->with('success', 'Шинэ бүлэг амжилттай нэмлээ.');;
     }
 
     /**
@@ -76,7 +88,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::where('cat_id',$id)->first();
-        return view('admin.category.edit',['cat' => $category]);
+        return view('admin.category.edit',['category' => $category]);
     }
 
     /**
@@ -88,7 +100,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'cat_name' => 'required|max:255',
+            'is_visible' => 'max:1',
+            'lang' => 'max:2',
+        ]);
+
+        Category::where('cat_id',$id)->update($validatedData);
+        return redirect('/categories')->with('success', 'Бүлгийг амжилттай заслаа.');
     }
 
     /**
@@ -99,6 +118,32 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::where('cat_id',$id);
+        $category->delete();
+        return redirect('/categories')->with('success', 'Бүлгийг амжилттай устгалаа.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function inVisible($id)
+    {
+        Category::where('cat_id',$id)->update(['is_visible' => 0]);
+        return redirect('/categories')->with('success', 'Бүлгийг нийтлэхгүйгээр заслаа.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function Visible($id)
+    {
+        Category::where('cat_id',$id)->update(['is_visible' => 1]);
+        return redirect('/categories')->with('success', 'Бүлгийг нийтлэхээр заслаа.');
     }
 }

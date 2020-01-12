@@ -15,22 +15,23 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
+                @include('common.errors')
                 <form action="{{ route('categories.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label>Бүлэг нэр</label>
-                        <input name="name" class="form-control" placeholder="Бүлэг">
+                        <input name="cat_name" class="form-control" placeholder="Бүлэг нэр">
                     </div>
                     <div class="form-group">
                         <label>Хэл</label>
-                        <select class="form-control">
+                        <select class="form-control" name="lang">
                             <option value="mn">MN</option>
                             <option value="en">EN</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Харагдах</label>
-                        <select class="form-control">
+                        <select class="form-control" name="is_visible">
                             <option value="1">Тийм</option>
                             <option value="0">Үгүй</option>
                         </select>

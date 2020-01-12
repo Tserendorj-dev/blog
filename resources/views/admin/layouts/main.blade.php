@@ -21,6 +21,7 @@
         <link href="{{ asset('../css/admin/morris.css') }}" rel="stylesheet">
         <!-- Custom Fonts -->
         <link href="{{ asset('../css/admin/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+        <script src="{{ asset('../js/admin/myCustom.js') }}"></script>
     </head>
     <body>
         <div id="wrapper">

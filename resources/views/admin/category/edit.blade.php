@@ -15,22 +15,24 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <form role="form">
+                @include('common.errors')
+                <form action="{{ route('categories.update', $category->cat_id) }}"" method="POST">
                 @csrf
+                @method('PATCH')
                     <div class="form-group">
                         <label>Бүлэг нэр</label>
-                        <input name="name" class="form-control" placeholder="Бүлэг">
+                        <input name="cat_name" value="{{ $category->cat_name }}" class="form-control" placeholder="Бүлэг нэр">
                     </div>
                     <div class="form-group">
                         <label>Хэл</label>
-                        <select class="form-control">
-                            <option value="mn">MN</option>
-                            <option value="en">EN</option>
+                        <select name="lang" class="form-control">
+                            <option value="mn" <?php if($category->lang=='mn'){echo "selected";} ?> >MN</option>
+                            <option value="en" <?php if($category->lang=='en'){echo "selected";} ?> >EN</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Харагдах</label>
-                        <select class="form-control">
+                        <select name="is_visible" class="form-control">
                             <option value="1">Тийм</option>
                             <option value="0">Үгүй</option>
                         </select>
