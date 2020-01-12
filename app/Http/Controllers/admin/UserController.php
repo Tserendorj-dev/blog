@@ -4,11 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Category;
+use App\User;
 
-class CategoryController extends Controller
+class UserController extends Controller
 {
-      /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -18,7 +18,6 @@ class CategoryController extends Controller
         $this->middleware('auth');
     }
 
-
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +25,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.category.index',['catList' => $categories]);
+        return view('admin.user.index');
     }
 
     /**
@@ -37,7 +35,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-       return view('admin.category.create');
+        //
     }
 
     /**
@@ -48,12 +46,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'cat_name' => 'required|max:255',
-        ]);
-
-        $category = Category::create($validatedData);
-        return redirect('/categories');
+        //
     }
 
     /**
@@ -75,8 +68,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::where('cat_id',$id)->first();
-        return view('admin.category.edit',['cat' => $category]);
+        //
     }
 
     /**

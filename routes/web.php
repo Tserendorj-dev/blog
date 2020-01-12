@@ -18,4 +18,5 @@ Auth::routes();
 Route::get('/dashboard', 'AdminController@index')->name('dashboard')->middleware('admincheck');
 
 Route::resource('categories', 'admin\CategoryController');
+Route::resource('users', 'admin\UserController');
 

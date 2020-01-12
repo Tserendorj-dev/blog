@@ -84,7 +84,7 @@
                                 <a href=""><i class="fa fa-table fa-fw"></i> Хэрэглэгч</a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-edit fa-fw"></i> Мэдээний бүлэг</a>
+                                <a href="/categories"><i class="fa fa-edit fa-fw"></i> Мэдээний бүлэг</a>
                             </li>
                             <li>
                                 <a href=""><i class="fa fa-edit fa-fw"></i> Мэдээ</a>
