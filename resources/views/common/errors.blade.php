@@ -1,7 +1,7 @@
 @if (count($errors) > 0)
     <!-- Алдааны жагсаалт -->
     <div class="alert alert-danger">
-        <strong>Алдаа</strong>
+        <strong>エラー</strong>
         <br><br>
         <ul>
             @foreach ($errors->all() as $error)

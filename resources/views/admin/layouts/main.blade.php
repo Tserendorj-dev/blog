@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="jp">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>БЛОГ.МН Удирдлага</title>
+        <title>管理画面</title>
         <!-- Bootstrap Core CSS -->
         <link href="{{ asset('../css/admin/bootstrap.min.css') }}" rel="stylesheet">
         <!-- MetisMenu CSS -->
@@ -38,7 +38,7 @@
                 </button>
 
                 <ul class="nav navbar-nav navbar-left navbar-top-links">
-                    <li><a href="{{ route('web') }}"><i class="fa fa-home fa-fw"></i>Нүүр хуудас</a></li>
+                    <li><a href="{{ route('web') }}"><i class="fa fa-home fa-fw"></i>トップ</a></li>
                 </ul>
 
                 <ul class="nav navbar-right navbar-top-links">
@@ -47,9 +47,9 @@
                             <i class="fa fa-user fa-fw"></i> {{ Auth::user()->name }} <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> Профайл</a>
+                            <li><a href="#"><i class="fa fa-user fa-fw"></i> プロファール</a>
                             </li>
-                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Тохиргоо</a>
+                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> 設定</a>
                             </li>
                             <li class="divider"></li>
                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -69,7 +69,7 @@
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
                                 <div class="input-group custom-search-form">
-                                    <input type="text" class="form-control" placeholder="Хайлт...">
+                                    <input type="text" class="form-control" placeholder="検索...">
                                     <span class="input-group-btn">
                                         <button class="btn btn-primary" type="button">
                                             <i class="fa fa-search"></i>
@@ -79,22 +79,22 @@
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="{{ route('dashboard') }}" class="active"><i class="fa fa-dashboard fa-fw"></i>Сайтын удирдлага</a>
+                                <a href="{{ route('dashboard') }}" class="active"><i class="fa fa-dashboard fa-fw"></i>管理画面</a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-table fa-fw"></i> Хэрэглэгч</a>
+                                <a href="/users"><i class="fa fa-table fa-fw"></i> ユーザー</a>
                             </li>
                             <li>
-                                <a href="/categories"><i class="fa fa-edit fa-fw"></i> Мэдээний бүлэг</a>
+                                <a href="/categories"><i class="fa fa-edit fa-fw"></i> 記事カテゴリー</a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-edit fa-fw"></i> Мэдээ</a>
+                                <a href=""><i class="fa fa-edit fa-fw"></i> 記事</a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-edit fa-fw"></i> Сэтгэгдэл</a>
+                                <a href=""><i class="fa fa-edit fa-fw"></i> コメント</a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-edit fa-fw"></i> Үнэлгээ</a>
+                                <a href="/rates"><i class="fa fa-edit fa-fw"></i> 評価(記事)</a>
                             </li>
                         </ul>
                     </div>

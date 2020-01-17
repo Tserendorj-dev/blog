@@ -15,9 +15,10 @@ class Rates extends Migration
     {
         Schema::create('rates', function (Blueprint $table) {
             $table->bigIncrements('rate_id');
-            $table->string('rate_name');
+            $table->string('rate_name_mn');
+            $table->string('rate_name_jp');
             $table->boolean('rate_value');
-            $table->string('lang');
+            //$table->string('lang');
             $table->timestamps();
         });
     }

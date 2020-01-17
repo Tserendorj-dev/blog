@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rate extends Model
 {
     protected $table = "rates";
-    protected $fillable = ['rate_name', 'rate_value', 'lang'];
+    protected $fillable = ['rate_name_mn', 'rate_name_jp','rate_value'];
 
     public function comments()
     {

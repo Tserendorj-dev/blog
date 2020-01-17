@@ -4,7 +4,7 @@
 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Сайтын удирдлага</h1>
+                            <h1 class="page-header">管理画面</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
@@ -19,13 +19,13 @@
                                         </div>
                                         <div class="col-xs-9 text-right">
                                             <div class="huge">12</div>
-                                            <div>МЭДЭЭЛЭЛ</div>
+                                            <div>記事</div>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">Дэлгэрэнгүй</span>
+                                        <span class="pull-left">記事一覧</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
                                         <div class="clearfix"></div>
@@ -42,13 +42,13 @@
                                         </div>
                                         <div class="col-xs-9 text-right">
                                             <div class="huge">26</div>
-                                            <div>СЭТГЭГДЭЛ</div>
+                                            <div>コメント</div>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">Дэлгэрэнгүй</span>
+                                        <span class="pull-left">コメント一覧</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
                                         <div class="clearfix"></div>
@@ -65,13 +65,13 @@
                                         </div>
                                         <div class="col-xs-9 text-right">
                                             <div class="huge">124</div>
-                                            <div>ХЭРЭГЛЭГЧ</div>
+                                            <div>ユーザー</div>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">Дэлгэрэнгүй</span>
+                                        <span class="pull-left">ユーザー一覧</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
                                         <div class="clearfix"></div>
@@ -88,13 +88,13 @@
                                         </div>
                                         <div class="col-xs-9 text-right">
                                             <div class="huge"></div>
-                                            <div>ҮНЭЛГЭЭ</div>
+                                            <div>評価</div>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="#">
                                     <div class="panel-footer">
-                                        <span class="pull-left">Дэлгэрэнгүй</span>
+                                        <span class="pull-left">評価一覧</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                         <div class="clearfix"></div>
                                     </div>

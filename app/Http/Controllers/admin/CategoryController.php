@@ -26,7 +26,23 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = new Category;
+        $queries = [];
+
+        $columns = [
+            'cat_name',
+            'lang',
+            'is_visible'
+        ];
+
+        foreach($columns as $column){
+            if(request()->has($column)){
+                $categories = $categories->where($column,'like', '%'.request($column).'%');
+                $queries[$column] = request($column);
+            }
+        }
+
+        $categories = $categories->paginate(2)->appends($queries);
         return view('admin.category.index',['catList' => $categories]);
     }
 
@@ -65,7 +81,7 @@ class CategoryController extends Controller
         // $new->save();
 
         $category = Category::create($validatedData);
-        return redirect('/categories')->with('success', 'Шинэ бүлэг амжилттай нэмлээ.');;
+        return redirect('/categories')->with('success', 'カテゴリーを登録しました。');;
     }
 
     /**
@@ -107,7 +123,8 @@ class CategoryController extends Controller
         ]);
 
         Category::where('cat_id',$id)->update($validatedData);
-        return redirect('/categories')->with('success', 'Бүлгийг амжилттай заслаа.');
+        $url = $request->redirects_to;
+        return redirect($url)->with('success', 'カテゴリーを更新しました。');
     }
 
     /**
@@ -120,7 +137,8 @@ class CategoryController extends Controller
     {
         $category = Category::where('cat_id',$id);
         $category->delete();
-        return redirect('/categories')->with('success', 'Бүлгийг амжилттай устгалаа.');
+        return back()->with('success', 'カテゴリーを削除しました。');
+        //redirect('/categories')->with('success', 'Бүлгийг амжилттай устгалаа.');
     }
 
     /**
@@ -132,7 +150,8 @@ class CategoryController extends Controller
     public function inVisible($id)
     {
         Category::where('cat_id',$id)->update(['is_visible' => 0]);
-        return redirect('/categories')->with('success', 'Бүлгийг нийтлэхгүйгээр заслаа.');
+        return back()->with('success', 'カテゴリーを非表示にしました。');
+        // return redirect('/categories')->with('success', 'Бүлгийг нийтлэхгүйгээр заслаа.');
     }
 
     /**
@@ -144,6 +163,6 @@ class CategoryController extends Controller
     public function Visible($id)
     {
         Category::where('cat_id',$id)->update(['is_visible' => 1]);
-        return redirect('/categories')->with('success', 'Бүлгийг нийтлэхээр заслаа.');
+        return back()->with('success', 'カテゴリーを表示にしました。');
     }
 }

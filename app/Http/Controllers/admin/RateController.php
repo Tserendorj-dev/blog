@@ -4,11 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\User;
+use App\Rate;
 
-class UserController extends Controller
+class RateController extends Controller
 {
-    /**
+      /**
      * Create a new controller instance.
      *
      * @return void
@@ -25,24 +25,24 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = new User;
+        $rates = new Rate;
         $queries = [];
 
         $columns = [
-            'name',
-            'email',
-            'level'
+            'rate_name_mn',
+            'rate_name_jp',
+            'rate_value'
         ];
 
         foreach($columns as $column){
             if(request()->has($column)){
-                $users = $users->where($column,'like', '%'.request($column).'%');
+                $rates = $rates->where($column,'like', '%'.request($column).'%');
                 $queries[$column] = request($column);
             }
         }
 
-        $users = $users->paginate(2)->appends($queries);
-        return view('admin.user.index',['usersList' => $users]);
+        $rates = $rates->paginate(2)->appends($queries);
+        return view('admin.rate.index',['ratesList' => $rates]);
     }
 
     /**
@@ -52,7 +52,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        return view('admin.rate.create');
     }
 
     /**
@@ -64,14 +64,13 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:30',
-            'email' => 'required|max:50',
-            'password' => 'required|max:20',
-            'level' => 'max:1',
+            'rate_name_mn' => 'required|max:100',
+            'rate_name_jp' => 'required|max:100',
+            'rate_value' => 'max:3',
         ]);
         
-        $user = User::create($validatedData);
-        return redirect('/users')->with('success', 'ユーザーを登録しました。');;
+        $rate = Rate::create($validatedData);
+        return redirect('/rates')->with('success', '評価を登録しました。');;
     }
 
     /**
@@ -93,8 +92,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('admin.user.edit',['user' => $user]);
+        $rate = Rate::where('rate_id',$id)->first();
+        return view('admin.rate.edit',['rate' => $rate]);
     }
 
     /**
@@ -107,14 +106,14 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:30',
-            'email' => 'required|max:50',
-            'level' => 'max:1',
+            'rate_name_mn' => 'required|max:100',
+            'rate_name_jp' => 'required|max:100',
+            'rate_value' => 'max:3',
         ]);
 
-        User::where('id',$id)->update($validatedData);
+        Rate::where('rate_id',$id)->update($validatedData);
         $url = $request->redirects_to;
-        return redirect($url)->with('success', 'ユーザーを更新しました。');
+        return redirect($url)->with('success', '評価を更新しました。');
     }
 
     /**
@@ -125,8 +124,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::where('id',$id);
-        $user->delete();
-        return back()->with('success', 'ユーザーを削除しました。');
+        $rate = Rate::where('rate_id',$id);
+        $rate->delete();
+        return back()->with('success', '評価を削除しました。');
     }
 }

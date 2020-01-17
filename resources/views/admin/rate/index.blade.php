@@ -4,13 +4,13 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">管理画面</h1>
+            <h1 class="page-header">評価</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <div class="row">
         <div style="padding-bottom:10px;text-align:right">
-            <a href="/users/create" class="btn btn-success">新規登録</a>
+            <a href="/rates/create" class="btn btn-success">新規登録</a>
         </div>
         @if(session()->get('success'))
             <div class="alert alert-success">
@@ -24,26 +24,18 @@
                 検索
             </div>
             <div class="panel-body">
-                <form action="\users">
+                <form action="\rates">
                        <table>
                         <tr>
-                            <td><label>ユーザー名</label></td>
-                            <td style="padding-left:15px;"><label>メール</label></td>
-                            <td style="padding-left:15px;"><label>ユーザーレベル</label></td>
+                            <td><label>評価名（日本語）</label></td>
+                            <td style="padding-left:15px;"><label>評価名（モンゴル語）</label></td>
                         </tr>
                         <tr>
                             <td>
-                                <input name="name" value="{{ isset(request()->name)?request()->name:'' }}" class="form-control" placeholder="ユーザー名">
+                                <input name="rate_name_jp" value="{{ isset(request()->rate_name_jp)?request()->rate_name_jp:'' }}" class="form-control" placeholder="評価名">
                             </td>
                             <td style="padding-left:15px;">
-                                <input name="email" value="{{ isset(request()->email)?request()->email:'' }}" class="form-control" placeholder="メール">
-                            </td>
-                            <td style="padding-left:15px;">
-                                <select class="form-control" name="level">
-                                    <option value="" @if(request()->level == '' )  selected @endif >全て</option>
-                                    <option value="1" @if(request()->level == '1' )  selected @endif >管理ユーザー</option>
-                                    <option value="2" @if(request()->level == '2' )  selected @endif >一般ユーザー</option>
-                                </select>
+                                <input name="rate_name_mn" value="{{ isset(request()->rate_name_mn)?request()->rate_name_mn:'' }}" class="form-control" placeholder="評価名">
                             </td>
                         </tr>
                        </table>
@@ -56,7 +48,7 @@
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-heading">
-                ユーザー一覧
+                評価一覧
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -65,38 +57,32 @@
                         <thead>
                             <tr>
                                 <th width="10px">№</th>
-                                <th>ユーザー名</th>
-                                <th>メール</th>
-                                <th>ユーザーレベル</th>
+                                <th>評価名（日本語）</th>
+                                <th>評価名（モンゴル語）</th>
                                 <th colspan="2"></th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($usersList as $user)
+                        @foreach($ratesList as $rate)
                             <tr>
-                                <td>{{ $loop->index + $usersList->firstItem() }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>
-                                    @if ($user->level===1) 
-                                     管理者ユーザー
-                                    @else
-                                     一般ユーザー
-                                    @endif
-                                </td>
-                                <td width="20px;"><a href="{{ route('users.edit', $user->id) }} " class="btn btn-primary">更新</a></td>
+                                <td>{{ $loop->index + $ratesList->firstItem() }}</td>
+                                <td>{{ $rate->rate_name_jp }}</td>
+                                <td>{{ $rate->rate_name_mn }}</td>
                                 <td width="20px;">
-                                    <form action="{{ route('users.destroy', $user->id) }}" method="post">
+                                    <a href="{{ route('rates.edit', $rate->rate_id) }} " class="btn btn-primary">更新</a>
+                                </td>
+                                <td width="20px;">
+                                    <form action="{{ route('rates.destroy', $rate->rate_id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger" type="submit" onClick="deleteConfirm(event);return false;">削除</button>
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach    
+                        @endforeach
                         </tbody>
                     </table>
-                    {{ $usersList->onEachSide(5)->links() }}    
+                        {{ $ratesList->onEachSide(5)->links() }}
                 </div>
                 <!-- /.table-responsive -->
             </div>
