@@ -88,10 +88,10 @@
                                 <a href="/categories"><i class="fa fa-edit fa-fw"></i> 記事カテゴリー</a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-edit fa-fw"></i> 記事</a>
+                                <a href="/posts"><i class="fa fa-edit fa-fw"></i> 記事</a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-edit fa-fw"></i> コメント</a>
+                                <a href="/comments"><i class="fa fa-edit fa-fw"></i> コメント</a>
                             </li>
                             <li>
                                 <a href="/rates"><i class="fa fa-edit fa-fw"></i> 評価(記事)</a>

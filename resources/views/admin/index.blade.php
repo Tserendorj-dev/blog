@@ -18,12 +18,12 @@
                                             <i class="fa fa-tasks fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div class="huge">12</div>
+                                            <div class="huge">{{ $posts->count() }}</div>
                                             <div>記事</div>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#">
+                                <a href="/posts">
                                     <div class="panel-footer">
                                         <span class="pull-left">記事一覧</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#">
+                                <a href="/comments">
                                     <div class="panel-footer">
                                         <span class="pull-left">コメント一覧</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -64,12 +64,12 @@
                                             <i class="fa fa-shopping-cart fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div class="huge">124</div>
+                                            <div class="huge">{{ $users->count() }}</div>
                                             <div>ユーザー</div>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#">
+                                <a href="/users">
                                     <div class="panel-footer">
                                         <span class="pull-left">ユーザー一覧</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -92,7 +92,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#">
+                                <a href="/rates">
                                     <div class="panel-footer">
                                         <span class="pull-left">評価一覧</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

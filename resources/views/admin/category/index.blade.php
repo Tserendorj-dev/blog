@@ -101,7 +101,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                        {{ $catList->onEachSide(5)->links() }}
+                        {{ $catList->onEachSide(1)->links() }}
                 </div>
                 <!-- /.table-responsive -->
             </div>

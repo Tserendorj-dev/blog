@@ -15,10 +15,15 @@ Route::get('/', 'WebController@index')->name('web');
 
 Auth::routes();
 
-Route::get('/dashboard', 'AdminController@index')->name('dashboard')->middleware('admincheck');
+Route::middleware(['admincheck'])->group(function () {
+    Route::get('/dashboard', 'AdminController@index')->name('dashboard');
+    Route::resource('users', 'admin\UserController');
+    Route::resource('categories', 'admin\CategoryController');
+    Route::get('/catvisible/{id}', 'admin\CategoryController@Visible');
+    Route::get('/catisvisible/{id}', 'admin\CategoryController@inVisible');
+    Route::resource('posts', 'admin\PostController');
+    Route::get('/postvisible/{id}', 'admin\PostController@Visible');
+    Route::get('/postisvisible/{id}', 'admin\PostController@inVisible');
+    Route::resource('rates', 'admin\RateController');
+});
 
-Route::resource('categories', 'admin\CategoryController');
-Route::resource('users', 'admin\UserController');
-Route::resource('rates', 'admin\RateController');
-Route::get('/catvisible/{id}', 'admin\CategoryController@Visible');
-Route::get('/catisvisible/{id}', 'admin\CategoryController@inVisible');

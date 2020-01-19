@@ -82,7 +82,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                        {{ $ratesList->onEachSide(5)->links() }}
+                        {{ $ratesList->onEachSide(1)->links() }}
                 </div>
                 <!-- /.table-responsive -->
             </div>
