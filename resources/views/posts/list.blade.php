@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- ##### Blog Area Start ##### -->
-<div class="blog-area section-padding-0-80">
+<div class="blog-area section-padding-0-10">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-8">
@@ -42,7 +42,7 @@
                 <div class="col-12 col-lg-4">
                     <div class="blog-sidebar-area">
                         <!-- Latest Posts Widget -->
-                        <div class="latest-posts-widget mb-50">
+                        <div class="latest-posts-widget mb-10">
                             @include('rightSide')
                         </div>
                     </div>

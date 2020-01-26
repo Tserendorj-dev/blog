@@ -1050,6 +1050,7 @@ textarea:focus {
   position: relative;
   z-index: 1;
   width: 100%;
+  margin-top: 10px;
   background-color: #02031c; }
   .footer-area .footer-widget-area {
     position: relative;

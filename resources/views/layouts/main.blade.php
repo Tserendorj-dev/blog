@@ -14,6 +14,7 @@
     <link rel="icon" href="img/core-img/favicon.ico">
     <!-- Core Stylesheet -->
     <link href="{{ asset('style.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/admin/myCustom.js') }}"></script>
 </head>
 <body>
     <!-- ##### Header Area Start ##### -->
@@ -34,6 +35,7 @@
                                 @if (Route::has('login'))
                                 <div class="login d-flex">
                                     @auth
+                                    <a href="/mypost"><i class="fa fa-sign-out fa-fw"></i>My posts</a>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i>{{ __('Logout') }}</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

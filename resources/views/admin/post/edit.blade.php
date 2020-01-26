@@ -18,9 +18,9 @@
                 <div class="row">
                     <div class="col-md-8 offset-md-2">
                     @include('common.errors')
-                <form action="{{ route('posts.update', 1) }}" method="POST">
-                @csrf
-                @method('PUT')
+                    <form action="{{ route('posts.update', $post->post_id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
                     <input name="redirects_to" value="{{ URL::previous() }}" type="hidden">
                     <div class="form-group">
                         <label>カテゴリー名</label>
@@ -71,7 +71,7 @@
                     </div>
                     <button type="submit" class="btn btn-default">更新</button>
                     <a href="{{ URL::previous() }}" class="btn btn-default">戻る</a>
-                </form>
+                    </form>
                     </div>
                 </div>
                 
