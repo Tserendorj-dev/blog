@@ -46,6 +46,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        $update = Post::where('post_id',$id)->first();
+        $update->views = $update->views+1;
+        $update->save();
+
         $postItem = Post::where('post_id',$id)->first();
         return view('posts.show',['postItem' => $postItem]);
     }

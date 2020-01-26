@@ -12,9 +12,7 @@
                         <div class="single-blog-post featured-post single-post">
                             <div class="post-data">
                                 <a href="#" class="post-catagory">{{ $postItem->category->cat_name }}</a>
-                                <a href="#" class="post-title">
-                                    <h6>{{ $postItem->title }}</h6>
-                                </a>
+                                <h6 class="post-title">{{ $postItem->title }}</h6>
                                 <div class="post-meta">
                                     <p class="post-author">By <a href="#">{{$postItem->user->name }}</a></p>
                                     <p>{!! $postItem->full_text !!}</p>
@@ -44,11 +42,16 @@
                                     <input type="hidden" name="parent_id" value="0">
                                     <div class="row">
                                         <div class="col-12 col-lg-6">
+
+                                            @if(Auth::user()->isUserComment($postItem->post_id) == '')
                                             <select name="rate_id" id="rate_id" class="form-control">
                                                 @foreach($rates as $rate)
-                                                    <option value="{{ $rate->rate_id }}">{{ $rate->rate_name_jp }}</option>
+                                                <option value="{{ $rate->rate_id }}">{{ $rate->rate_name_jp }}</option>
                                                 @endforeach
                                             </select>
+                                            @else
+                                            <input type="hidden" name="rate_id" value="{{ Auth::user()->isUserComment($postItem->post_id)->rate_id }}">
+                                            @endif
                                         </div>
                                         <div class="col-12">
                                             <textarea name="comment_text" class="form-control" id="comment_text" cols="30" rows="10" placeholder="Message"></textarea>

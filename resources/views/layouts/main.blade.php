@@ -51,6 +51,7 @@
                                 @endif
                                 <!-- Search Form -->
                                 <div class="search-form">
+                                    <div style="text-align:right;"><a href="">MN</a></div>
                                     <form action="#" method="post">
                                         <input type="search" name="search" class="form-control" placeholder="Search">
                                         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
