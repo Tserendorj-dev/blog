@@ -41,7 +41,7 @@ class UserController extends Controller
             }
         }
 
-        $users = $users->paginate(2)->appends($queries);
+        $users = $users->orderBy('level','asc')->paginate(15)->appends($queries);
         return view('admin.user.index',['usersList' => $users]);
     }
 
@@ -66,11 +66,16 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:30',
             'email' => 'required|max:50',
-            'password' => 'required|max:20',
+            'password' => 'required|min:8|max:20',
             'level' => 'max:1',
         ]);
         
-        $user = User::create($validatedData);
+        $newUser =  new User();
+        $newUser->name = $request->name;
+        $newUser->email = $request->email;
+        $newUser->level = $request->level;
+        $newUser->password = bcrypt($request->password);
+        $newUser->save();
         return redirect('/users')->with('success', 'ユーザーを登録しました。');;
     }
 

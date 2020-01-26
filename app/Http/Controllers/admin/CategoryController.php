@@ -42,7 +42,7 @@ class CategoryController extends Controller
             }
         }
 
-        $categories = $categories->paginate(2)->appends($queries);
+        $categories = $categories->paginate(10)->appends($queries);
         return view('admin.category.index',['catList' => $categories]);
     }
 
@@ -66,21 +66,14 @@ class CategoryController extends Controller
     {
         $validatedData = $request->validate([
             'cat_name' => 'required|max:255',
-            'is_visible' => 'max:1',
-            'lang' => 'max:2',
         ]);
         
-        // $new = new Category();
-        // $new->parentmenu = $request->parentmenu;
-        // $new->menulbl = $request->menulbl;
-        // $new->hreflink = "www";
-        // $new->order = 1;
-        // $new->contentid = 1;
-        // $new->isactive = 1;
-        // $new->whois = Auth::user() -> id;
-        // $new->save();
-
-        $category = Category::create($validatedData);
+        $new = new Category();
+        $new->cat_name = $request->cat_name;
+        $new->is_visible = $request->is_visible;
+        $new->lang = $request->lang;
+        $new->save();
+        // $category = Category::create($validatedData);
         return redirect('/categories')->with('success', 'カテゴリーを登録しました。');;
     }
 
@@ -118,11 +111,13 @@ class CategoryController extends Controller
     {
         $validatedData = $request->validate([
             'cat_name' => 'required|max:255',
-            'is_visible' => 'max:1',
-            'lang' => 'max:2',
         ]);
-
-        Category::where('cat_id',$id)->update($validatedData);
+        
+        $update = Category::where('cat_id',$id)->first();
+        $update->cat_name = $request->cat_name;
+        $update->is_visible = $request->is_visible;
+        $update->lang = $request->lang;
+        $update->save();
         $url = $request->redirects_to;
         return redirect($url)->with('success', 'カテゴリーを更新しました。');
     }

@@ -107,18 +107,22 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $validatedData = $request->validate([
-        //     'cat_id' => 'required|max:255',
-        // ]);
+        $validatedData = $request->validate([
+            'cat_id' => 'required|max:4',
+            'title' => 'required|max:255',
+            'desc_text' => 'required',
+            'full_text' => 'required',
+        ]);
         
         $new = Post::where('post_id',$id)->first();
-        //$new->cat_id = $request->cat_id;
+        $new->cat_id = $request->cat_id;
         $new->title = $request->title;
-        //$new->desc_text = $request->desc_text;
-        //$new->full_text = $request->full_text;
-        $new->update();
-        // $url = $request->redirects_to;
-        // return redirect($url)->with('success', '記事を更新しました。');
+        $new->desc_text = $request->desc_text;
+        $new->full_text = $request->full_text;
+        $new->lang = $request->lang;
+        $new->save();
+        $url = $request->redirects_to;
+        return redirect($url)->with('success', '記事を更新しました。');
     }
 
     /**

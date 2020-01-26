@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         <label>パスワード</label>
-                        <input name="password" class="form-control" placeholder="パスワード">
+                        <input name="password" class="form-control" type="password" placeholder="パスワード">
                     </div>
                     <div class="form-group">
                         <label>メール</label>

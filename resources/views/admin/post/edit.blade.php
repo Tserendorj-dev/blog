@@ -35,17 +35,24 @@
                         <input name="title" value="{{ $post->title }}" class="form-control" placeholder="タイトル">
                     </div>
                     <div class="form-group">
-                        <label>記事内容</label>
-                        <textarea class="form-control" id="desc_text"" rows="3">{{ $post->desc_text }}</textarea>
+                        <label>画像</label>
+                        <input type="file" name="pic" id="pic">
                     </div>
                     <div class="form-group">
                         <label>記事内容</label>
-                        <div id="full_text">
-                            <p>{{ $post->full_text }}</p>
-                        </div>
+                        <textarea class="form-control" id="desc_text" name="desc_text" rows="3">{{ $post->desc_text }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>記事内容</label>
+                        <textarea id="full_text" name="full_text">
+                            {{ $post->full_text }}
+                        </textarea>
                         <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
                         <script>
-                            CKEDITOR.replace( 'full_text' );
+                            CKEDITOR.replace( 'full_text', {
+                                filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+                                filebrowserUploadMethod: 'form'
+                            });
                         </script>
                     </div>
                     <div class="form-group">

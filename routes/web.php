@@ -27,3 +27,8 @@ Route::middleware(['admincheck'])->group(function () {
     Route::resource('rates', 'admin\RateController');
 });
 
+Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
+Route::get('post/view/{id}', 'PostController@show');
+Route::get('post/list/{id}', 'PostController@list');
+
+Route::post('/comment/add', 'CommentController@store')->name('commentAdd');

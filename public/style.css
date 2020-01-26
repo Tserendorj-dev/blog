@@ -975,12 +975,12 @@ textarea:focus {
       line-height: 2;
       font-weight: 500; }
   .comment_area .single_comment_area {
-    margin-bottom: 30px; }
+    margin-bottom: 5px; }
     .comment_area .single_comment_area:last-of-type {
       margin-bottom: 0; }
   .comment_area .children .single_comment_area {
     margin-left: 50px;
-    margin-top: 30px; }
+    margin-top: 5px; }
 
 .post-a-comment-area {
   position: relative;
