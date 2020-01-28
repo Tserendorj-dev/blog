@@ -42,7 +42,7 @@
                                             @csrf
                                         </form>
                                     @else
-                                        <a href="{{ route('login', app()->getLocale()) }}">Login</a>
+                                    <a href="{{ route('login', app()->getLocale()) }}">{{ __('test.login')}}</a>
                                         @if (Route::has('register'))
                                             <a href="{{ route('register', app()->getLocale()) }}">Register</a>
                                         @endif
