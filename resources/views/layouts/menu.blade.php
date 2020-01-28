@@ -6,7 +6,7 @@
                     <nav class="classy-navbar justify-content-between" id="newspaperNav">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="{{ route('web') }}"><img src="/img/core-img/logo.png" alt=""></a>
+                            <a href="{{ route('web', app()->getLocale()) }}"><img src="/img/core-img/logo.png" alt=""></a>
                         </div>
 
                         <!-- Navbar Toggler -->
@@ -23,7 +23,7 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li class="active"><a href="{{ route('web') }}">Home</a></li>
+                                    <li class="active"><a href="{{ route('web', app()->getLocale()) }}">Home</a></li>
                                     @foreach($menus as $menu)
                                         <li><a href="/post/list/{{ $menu->cat_id }}">{{ $menu->cat_name }}</a></li>
                                     @endforeach
