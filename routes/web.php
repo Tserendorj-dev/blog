@@ -24,10 +24,10 @@ Route::group([
     Route::get('mypost/create/', 'user\PostController@create');
     Route::get('mypost/edit/{id}', 'user\PostController@edit');
     Route::get('/', 'WebController@index')->name('web');
+    Auth::routes();
 
     });
 
-Auth::routes();
 
 Route::middleware(['admincheck'])->group(function () {
     Route::get('/dashboard', 'AdminController@index')->name('dashboard');

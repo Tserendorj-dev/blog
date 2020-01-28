@@ -25,7 +25,7 @@
                                 <ul>
                                     <li class="active"><a href="{{ route('web', app()->getLocale()) }}">Home</a></li>
                                     @foreach($menus as $menu)
-                                        <li><a href="/post/list/{{ $menu->cat_id }}">{{ $menu->cat_name }}</a></li>
+                                        <li><a href="/{{ app()->getLocale() }}/post/list/{{ $menu->cat_id }}">{{ $menu->cat_name }}</a></li>
                                     @endforeach
                                     <li><a href="#">Contact</a></li>
                                 </ul>

@@ -38,7 +38,7 @@
                 </button>
 
                 <ul class="nav navbar-nav navbar-left navbar-top-links">
-                    <li><a href="{{ route('web') }}"><i class="fa fa-home fa-fw"></i>トップ</a></li>
+                    <li><a href="{{ route('web',app()->getLocale()) }}"><i class="fa fa-home fa-fw"></i>トップ</a></li>
                 </ul>
 
                 <ul class="nav navbar-right navbar-top-links">
@@ -52,10 +52,10 @@
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> 設定</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <li><a href="{{ route('logout',app()->getLocale()) }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                                      <i class="fa fa-sign-out fa-fw"></i>{{ __('Logout') }}</a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout',app()->getLocale()) }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                             </li>

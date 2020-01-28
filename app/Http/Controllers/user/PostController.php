@@ -58,7 +58,7 @@ class PostController extends Controller
         $post->views = 0;
         $post->lang = $req->lang;
         $post->save();
-        return redirect('/mypost');
+        return redirect(app()->getLocale().'/mypost');
 
     }
 
@@ -67,9 +67,9 @@ class PostController extends Controller
         $myPost = Post::where('post_id',$id)->first();
         
         if($myPost->user_id!=auth()->user()->id){
-            return redirect('/mypost')->with('success', 'Error');
+            return redirect(app()->getLocale().'/mypost')->with('success', 'Error');
         }elseif($myPost->is_active==1){
-            return redirect('/mypost')->with('success', 'isActive');
+            return redirect(app()->getLocale().'/mypost')->with('success', 'isActive');
         }else{
             $categories = Category::orderBy('cat_name','asc')->get();
             return view('user.post.edit',['myPost' => $myPost,'categories' => $categories]);
@@ -108,7 +108,7 @@ class PostController extends Controller
         $post->lang = $req->lang;
         $post->save();
 
-        return redirect('/mypost');
+        return redirect(app()->getLocale().'/mypost');
     }
 
     public function destroy(Request $req)
@@ -116,12 +116,12 @@ class PostController extends Controller
         $myPost = Post::where('post_id',$req->id)->first();
         
         if($myPost->user_id!=auth()->user()->id){
-            return redirect('/mypost')->with('success', 'Error');
+            return redirect(app()->getLocale().'/mypost')->with('success', 'Error');
         }elseif($myPost->is_active==1){
-            return redirect('/mypost')->with('success', 'isActive');
+            return redirect(app()->getLocale().'/mypost')->with('success', 'isActive');
         }else{
             $myPost->delete();
-            return redirect('/mypost')->with('success', 'Deleted');
+            return redirect(app()->getLocale().'/mypost')->with('success', 'Deleted');
         }
     }
 }

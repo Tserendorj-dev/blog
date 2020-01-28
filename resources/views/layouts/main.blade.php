@@ -35,8 +35,8 @@
                                 @if (Route::has('login'))
                                 <div class="login d-flex">
                                     @auth
-                                    <a href="/mypost"><i class="fa fa-sign-out fa-fw"></i>My posts</a>
-                                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    <a href="/{{ app()->getLocale() }}/mypost"><i class="fa fa-sign-out fa-fw"></i>My posts</a>
+                                        <a href="{{ route('logout', app()->getLocale()) }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i>{{ __('Logout') }}</a>
                                         <form id="logout-form" action="{{ route('logout', app()->getLocale()) }}" method="POST" style="display: none;">
                                             @csrf

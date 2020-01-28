@@ -12,8 +12,8 @@
                         <!-- Single Featured Post -->
                         <div class="single-blog-post featured-post mb-30">
                             <div class="post-data">
-                                <a href="/post/list/{{ $post->cat_id }}" class="post-catagory">{{ $post->category->cat_name }}</a>
-                                <a href="/post/view/{{ $post->post_id }}" class="post-title">
+                                <a href="/{{ app()->getLocale() }}/post/list/{{ $post->cat_id }}" class="post-catagory">{{ $post->category->cat_name }}</a>
+                                <a href="/{{ app()->getLocale() }}/post/view/{{ $post->post_id }}" class="post-title">
                                     <h6>{{ $post->title }}</h6>
                                 </a>
                                 <div class="post-meta">
