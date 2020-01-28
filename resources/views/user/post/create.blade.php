@@ -49,7 +49,7 @@
                         </select>
                     </div>
                     <button type="submit" class="btn btn-default">Create</button>
-                    <a href="/mypost" class="btn btn-default">戻る</a>
+                    <a href="/{{ app()->getLocale() }}/mypost" class="btn btn-default">戻る</a>
                 </form>
 
                 </div>

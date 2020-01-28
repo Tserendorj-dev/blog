@@ -27,7 +27,7 @@
                         <div class="top-header-content d-flex align-items-center justify-content-between">
                             <!-- Logo -->
                             <div class="logo">
-                                <a href="{{ route('web') }}"><img src="/img/core-img/logo.png" alt=""></a>
+                                <a href="{{ route('web', app()->getLocale()) }}"><img src="/img/core-img/logo.png" alt=""></a>
                             </div>
                             <!-- Login Search Area -->
                             <div class="login-search-area d-flex align-items-center">
@@ -35,16 +35,16 @@
                                 @if (Route::has('login'))
                                 <div class="login d-flex">
                                     @auth
-                                    <a href="/mypost"><i class="fa fa-sign-out fa-fw"></i>My posts</a>
-                                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    <a href="/{{ app()->getLocale() }}/mypost"><i class="fa fa-sign-out fa-fw"></i>My posts</a>
+                                        <a href="{{ route('logout', app()->getLocale()) }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i>{{ __('Logout') }}</a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('logout', app()->getLocale()) }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>
                                     @else
-                                        <a href="{{ route('login') }}">Login</a>
+                                    <a href="{{ route('login', app()->getLocale()) }}">{{ __('test.login')}}</a>
                                         @if (Route::has('register'))
-                                            <a href="{{ route('register') }}">Register</a>
+                                            <a href="{{ route('register', app()->getLocale()) }}">Register</a>
                                         @endif
                                     @endauth
                                 </div>
@@ -84,6 +84,7 @@
                             <div class="footer-logo">
                                 <a href="index.html"><img src="/img/core-img/logo.png" alt=""></a>
                             </div>
+                            <h1>    {{app()->getLocale()}} </h1>
                             <!-- List -->
                             <ul class="list">
                                 <li><a href="mailto:contact@youremail.com">contact@youremail.com</a></li>

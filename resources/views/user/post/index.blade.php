@@ -13,7 +13,7 @@
                         </div><br />
                     @endif
                     <div style="padding-bottom:10px;text-align:right">
-                        <a href="/mypost/create" class="btn btn-success">Create post</a>
+                        <a href="mypost/create" class="btn btn-success">Create post</a>
                     </div>
                     <table class="table table-hover">
                         <thead>
@@ -32,9 +32,9 @@
                             <td>{{ $list->category->cat_name }}</td>
                             <td>{{ $list->title }}</td>
                             <td>{{ $list->created_at }}</td>
-                            <td><a href="/mypost/edit/{{ $list->post_id }} " class="btn btn-primary">Edit</a></td>
+                            <td><a href="mypost/edit/{{ $list->post_id }} " class="btn btn-primary">Edit</a></td>
                             <td>
-                                <form action="mypost/delete" method="post">
+                                <form action="/mypost/delete" method="post">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $list->post_id }}">
                                     <button class="btn btn-danger" type="submit" onClick="deleteConfirm(event);return false;">Delete</button>

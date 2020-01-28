@@ -10,10 +10,24 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return redirect(app()->getLocale());
+});
+Route::group([
+    'prefix' => '{locale}',
+    'where' => ['locale' => '[a-zA-Z]{2}'],
+    'middleware' => 'setLocale'], function () {
 
-Route::get('/', 'WebController@index')->name('web');
+    Route::get('post/view/{id}', 'PostController@show');
+    Route::get('post/list/{id}', 'PostController@list');
+    Route::get('mypost/', 'user\PostController@index');
+    Route::get('mypost/create/', 'user\PostController@create');
+    Route::get('mypost/edit/{id}', 'user\PostController@edit');
+    Route::get('/', 'WebController@index')->name('web');
+    Auth::routes();
 
-Auth::routes();
+    });
+
 
 Route::middleware(['admincheck'])->group(function () {
     Route::get('/dashboard', 'AdminController@index')->name('dashboard');
@@ -29,14 +43,11 @@ Route::middleware(['admincheck'])->group(function () {
 
 //user and admin
 Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
-Route::get('mypost/', 'user\PostController@index');
-Route::get('mypost/create/', 'user\PostController@create');
+
 Route::post('mypost/store/', 'user\PostController@store');
-Route::get('mypost/edit/{id}', 'user\PostController@edit');
 Route::post('mypost/update/', 'user\PostController@update');
 Route::post('mypost/delete/', 'user\PostController@destroy');
 
 //user and guest
-Route::get('post/view/{id}', 'PostController@show');
-Route::get('post/list/{id}', 'PostController@list');
+
 Route::post('/comment/add', 'CommentController@store')->name('commentAdd');
