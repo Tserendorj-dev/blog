@@ -1,100 +1,75 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.main')
 
-        <title>Laravel</title>
+@section('content')
+<!-- ##### Featured Post Area Start ##### -->
+<div class="featured-post-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-8">
+                    <div class="row">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+                        <!-- Single Featured Post -->
+                        <div class="col-12 col-lg-7">
+                            <div class="single-blog-post featured-post">
+                                <div class="post-thumb">
+                                    <a href="#"><img src="/img/bg-img/16.jpg" alt=""></a>
+                                </div>
+                                <div class="post-data">
+                                    <a href="#" class="post-catagory">{{ $lastPosts[0]->category->cat_name }}</a>
+                                    <a href="/post/view/{{ $lastPosts[0]->post_id }}" class="post-title"><h6>{{ $lastPosts[0]->title }}</h6></a>
+                                    <div class="post-meta">
+                                        <p class="post-author">By <a href="#">{{ $lastPosts[0]->user->name }}</a></p>
+                                        <p class="post-excerp">{{ $lastPosts[0]->desc_text }}</p>
+                                        <!-- Post Like & Post Comment -->
+                                        <div class="d-flex align-items-center">
+                                            <a href="#" class="post-like"><img src="/img/core-img/like.png" alt=""> <span>{{ $lastPosts[0]->views }}</span></a>
+                                            <a href="#" class="post-comment"><img src="/img/core-img/chat.png" alt=""> <span>{{ $lastPosts[0]->commentsCount() }}</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+                        <div class="col-12 col-lg-5">
+                            <?php
+                            $flg = true;
+                            foreach($lastPosts as $last)
+                                {
+                                    if($flg) {$flg = false; continue;} 
+                            ?>
+                            <!-- Single Featured Post -->
+                            <div class="single-blog-post featured-post-2">
+                                <div class="post-thumb">
+                                    <a href="#"><img src="/img/bg-img/17.jpg" alt=""></a>
+                                </div>
+                                <div class="post-data">
+                                    <a href="#" class="post-catagory">{{ $last->category->cat_name }}</a>
+                                    <div class="post-meta">
+                                        <a href="/post/view/{{ $last->post_id }}" class="post-title"><h6>{{ $last->title }}</h6></a>
+                                        <!-- Post Like & Post Comment -->
+                                        <div class="d-flex align-items-center">
+                                            <a href="#" class="post-like"><img src="/img/core-img/like.png" alt=""> <span>{{ $last->views }}</span></a>
+                                            <a href="#" class="post-comment"><img src="/img/core-img/chat.png" alt=""> <span>{{ $last->commentsCount() }}</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                                }
+                            ?>
+                        </div>
+                    </div>
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <!-- ##### Right Start ##### -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <!-- Single Featured Post -->
+                    @include('rightSide')
                 </div>
+                <!-- ##### Right End ##### -->
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+    <!-- ##### Featured Post Area End ##### -->
+
+@endsection

@@ -36,4 +36,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //My code relation 2020/01/07
+    public function posts()
+    {
+        //return $this->hasMany(Post::class);
+        return $this->hasMany('App\Post', 'user_id', 'id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    
+    public function isUserComment($post_id)
+    {
+        return Comment::where('post_id',$post_id)
+                            ->where('user_id', auth()->user()->id)
+                            ->first();
+    }
+
+
+    // public function isUserComment()
+    // {
+    //     return $this->hasManyThrough('App\Post', 'App\Comment','post_id','user_id','user_id','id');
+    // }
 }
